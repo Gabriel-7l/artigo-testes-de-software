@@ -18,11 +18,11 @@ class Pedido:
         return total
 
     def resumo(self, precos):
-        print(f"\n📦 Pedido #{self.id_pedido} | Cliente: {self.cliente} | Data: {self.data}")
+        print(f"\n Pedido #{self.id_pedido} | Cliente: {self.cliente} | Data: {self.data}")
         for item in self.itens:
             preco_unit = precos.get(item['produto'], 0)
             print(f"   - {item['produto']}: {item['quantidade']}x R${preco_unit:.2f}")
-        print(f"   💰 Total: R${self.calcular_total(precos):.2f} | Status: {self.status}")
+        print(f"    Total: R${self.calcular_total(precos):.2f} | Status: {self.status}")
 
 
 def validar_nome(nome):
@@ -68,12 +68,12 @@ def relatorio(pedidos):
     cancelados = [p for p in pedidos if p.status == "cancelado"]
     total_geral = sum(p.calcular_total(PRECOS) for p in ativos)  # ERRO: KeyError se produto não estiver em PRECOS
 
-    print(f"\n📊 RELATÓRIO")
+    print(f"\n RELATÓRIO")
     print(f"Pedidos ativos: {len(ativos)} | Cancelados: {len(cancelados)}")
     print(f"Total em aberto: R${total_geral:.2f}")
 
     if historico_cancelamentos:
-        print("\n🗑️ Histórico de cancelamentos:")
+        print("\n Histórico de cancelamentos:")
         for id_p, data in historico_cancelamentos:
             print(f"   Pedido #{id_p} cancelado em {data}")
 
